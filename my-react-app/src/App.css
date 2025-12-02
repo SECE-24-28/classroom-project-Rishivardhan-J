@@ -1,0 +1,218 @@
+/* 1. Base Setup */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #020617; /* slate-950 */
+  color: white;
+  overflow-x: hidden;
+}
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+}
+
+/* 2. Background Blobs (Decoration) */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.blob-1 {
+  top: 40px;
+  left: 40px;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(30, 58, 138, 0.3); /* blue-900 */
+}
+
+.blob-2 {
+  bottom: 40px;
+  right: 40px;
+  width: 350px;
+  height: 350px;
+  background-color: rgba(49, 46, 129, 0.3); /* indigo-900 */
+  animation-delay: 1s;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+/* 3. The Capsule (The Main Constraint) */
+.capsule {
+  position: relative;
+  z-index: 10;
+  
+  /* RESPONSIVE WIDTH LOGIC (Mobile First) */
+  width: 91.666667%; /* w-11/12 */
+  
+  /* Theme & Appearance */
+  background: linear-gradient(to right, #1e3a8a, #3730a3, #1e3a8a);
+  border-radius: 9999px;
+  box-shadow: 0 0 30px rgba(30, 58, 138, 0.6);
+  border: 1px solid rgba(29, 78, 216, 0.5);
+  
+  /* Animation props */
+  transition: all 1s ease-out;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.capsule.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.capsule:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 50px rgba(59, 130, 246, 0.5);
+}
+
+/* RESPONSIVE BREAKPOINTS (Desktop Constraints) */
+@media (min-width: 768px) {
+  .capsule { width: 75%; } /* md:w-3/4 */
+  .capsule-content { padding: 3rem 4rem; }
+}
+
+@media (min-width: 1024px) {
+  .capsule { width: 66.666667%; } /* lg:w-2/3 */
+}
+
+@media (min-width: 1280px) {
+  .capsule { width: 50%; } /* xl:w-1/2 */
+}
+
+/* 4. Shine Effect */
+.shine-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.capsule:hover .shine-overlay {
+  opacity: 1;
+}
+
+/* 5. Inner Content */
+.capsule-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: white;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: radial-gradient(#ffffff 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* 6. Typography & Elements */
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(23, 37, 84, 0.5);
+  backdrop-filter: blur(4px);
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  margin-bottom: 1rem;
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+.badge-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #a5f3fc; /* cyan-200 */
+  text-transform: uppercase;
+}
+
+.main-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .main-title { font-size: 2.25rem; }
+}
+
+@media (min-width: 1024px) {
+  .main-title { font-size: 3rem; }
+}
+
+.highlight-text {
+  background: linear-gradient(to right, #22d3ee, #93c5fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.description {
+  color: rgba(219, 234, 254, 0.8);
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 36rem;
+  margin: 0 0 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .description { font-size: 1.125rem; }
+}
+
+/* 7. Button */
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+  color: #1e3a8a;
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  margin-top: 0.5rem;
+}
+
+.cta-button:hover {
+  background-color: #ecfeff;
+}
+
+.arrow-icon {
+  transition: transform 0.2s;
+}
+
+.cta-button:hover .arrow-icon {
+  transform: translateX(4px);
+}
