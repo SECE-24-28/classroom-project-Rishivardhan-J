@@ -1,0 +1,17 @@
+.para {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #e41313;
+}
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+.rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: red;
+    margin-left: 50px;
+    padding-right: 100px;
+}
