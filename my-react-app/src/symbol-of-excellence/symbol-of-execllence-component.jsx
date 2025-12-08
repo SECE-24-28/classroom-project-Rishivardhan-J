@@ -1,6 +1,9 @@
 import React from "react";
 import { SymbolOfExcellenceStyle } from "./symbol-of-excellence-style";
+import { useParams } from "react-router-dom";
 const SymbolOfExcellenceComponent = () => {
+  const { id } = useParams();
+  console.log("=>(The id is :)=", id);
   return (
     <SymbolOfExcellenceStyle>
       <div className="element__one">
@@ -12,7 +15,7 @@ const SymbolOfExcellenceComponent = () => {
           with a mission to empower students with the right skills and mindset
           for success.
         </p>
-      </div>
+      </div> 
       <div className="element__two">
         <div className="element__two__child">
           <h2 className="sub__title">Our Vision</h2>
