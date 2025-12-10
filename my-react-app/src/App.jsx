@@ -13,6 +13,10 @@ import UsestateformComponent from "./use-state-form/use-state-form-component";
 import AdditionOperationComponent from "./addition-operation-in-state/addition-operation-component";
 //import Signup from "./signup/Signup";
 import AptitudeLmsComponent from "./Aptitude-Guru/AptitudeLmsComponent";
+import FetchApiComponent from "./fetch-api/fetch-api-component";
+import UseEffectComponent from "./use-effect-practice/use-effect-practice";
+import UseEffectPracticeTwo from "./use-effect-practice/use-effect-practice-2";
+import AxiosPractice from "./use-effect-practice/use-effect-practice-2";
 function App() {
   // const arr1 = [
   //   { name: "sai", mobile: "1234" },
@@ -58,6 +62,16 @@ function App() {
         />
       {/* <Route path="/signup" element={<Signup />} /> */}
       <Route path="/aptitude-lms" element={<AptitudeLmsComponent />} />
+       <Route path="/api-fetch" element={<FetchApiComponent />} />
+       <Route path="/use-effect-practice" element={<UseEffectComponent />} />
+        <Route
+          path="/use-effect-practice-2"
+          element={<UseEffectPracticeTwo />}
+        />
+        <Route
+          path="/use-effect-api"
+          element={<AxiosPractice />}
+        />
       </Routes>
 
     </div>
